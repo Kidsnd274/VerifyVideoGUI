@@ -6,9 +6,12 @@ class MainWindow:
         self.root.title("VerifyVideoGUI")
         self.root.geometry("600x400")
 
+        # List of files
+        
+
         # Button
         self.verify_button = customtkinter.CTkButton(root, text="Verify Video", command=self.on_verify_button_clicked)
-        self.verify_button.place(relx=0.5, rely=0.5, anchor=customtkinter.CENTER)
+        self.verify_button.place(relx=0.5, rely=0.7, anchor=customtkinter.CENTER)
 
     def on_verify_button_clicked(self):
         # Assuming the video path is predefined or obtained through another UI component
