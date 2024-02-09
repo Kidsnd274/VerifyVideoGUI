@@ -1,8 +1,16 @@
-To clone the repo, do
+## Development
+To clone the repo, run the following command as this repo uses git submodules
+```
 `git clone --recurse-submodules https://github.com/Kidsnd274/VerifyVideoGUI`
-or do
+```
+or if you have already cloned the repo, run the following commands in the repo directory
 ```
 git submodule init 
 git submodule update
 ```
-if you have already cloned the repo
+To create the Python virtual environment, run the following command:
+```
+python -m venv venv
+.\venv\Scripts\activate.bat
+pip install -r requirements.txt
+```
