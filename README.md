@@ -1,7 +1,7 @@
 ## Development
 To clone the repo, run the following command as this repo uses git submodules
 ```
-`git clone --recurse-submodules https://github.com/Kidsnd274/VerifyVideoGUI`
+git clone --recurse-submodules https://github.com/Kidsnd274/VerifyVideoGUI
 ```
 or if you have already cloned the repo, run the following commands in the repo directory
 ```
