@@ -1,10 +1,10 @@
-import customtkinter
+import customtkinter as ctk
 from ui.mainwindow import MainWindow
 
 def main():
-    customtkinter.set_appearance_mode("System") # Probably want to put this in settings next time
-    customtkinter.set_default_color_theme("blue")
-    app = customtkinter.CTk()
+    ctk.set_appearance_mode("System") # Probably want to put this in settings next time
+    ctk.set_default_color_theme("blue")
+    app = ctk.CTk()
     MainWindow(app)
     app.mainloop()
 
