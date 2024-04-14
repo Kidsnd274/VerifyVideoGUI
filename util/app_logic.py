@@ -19,6 +19,7 @@ def call_verifier(optionsObject):
         args.append('-if')
     if filter_suffix:
         args.append('-s')
+
     subprocess.run(args, creationflags=creation_flag)
 
 def check_for_ffmpeg_binaries():
