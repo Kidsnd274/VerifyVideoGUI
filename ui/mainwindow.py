@@ -2,6 +2,7 @@ import customtkinter as ctk
 import tkinter as tk
 from CTkListbox import *
 from tkinter import filedialog
+from util.verify_options_object import VerifyOptionsObject
 
 class MainWindow:
     def __init__(self, root, verifier_function):
@@ -19,15 +20,17 @@ class MainWindow:
         # self.browse_button.place(relx=0.5, rely=0.3, anchor=ctk.CENTER)
         self.browse_button.pack()
         
-        # # Skip ffmpeg check checkbox
-        # self.skip_ffmpeg_check_checkbox = ctk.CTkCheckBox(root, text="Skip ffmpeg Check", onvalue="on", offvalue="off")
+        # Skip ffmpeg check checkbox
+        self.skip_ffmpeg_check_checkbox = ctk.CTkCheckBox(root, text="Skip ffmpeg Check", onvalue="on", offvalue="off")
+        self.skip_ffmpeg_check_checkbox.pack()
         # self.skip_ffmpeg_check_checkbox.place(relx=0.5, rely=0.5, anchor=ctk.CENTER)
         
-        # # Filter files suffix
-        # self.filter_checkbox_state = ctk.StringVar(value="off")
-        # self.suffix_var = ctk.StringVar(value="_new")
-        # self.filter_suffix_checkbox = ctk.CTkCheckBox(root, text="Filter out files with suffix ", command=self.toggle_filter_checkbox, variable=self.filter_checkbox_state, onvalue="on", offvalue="off")
-        # self.filter_suffix_entry = ctk.CTkEntry(root, textvariable=self.suffix_var, placeholder_text="_new", state="disabled")
+        # Filter files suffix
+        self.filter_checkbox_state = ctk.StringVar(value="off")
+        self.suffix_var = ctk.StringVar(value="_new")
+        self.filter_suffix_checkbox = ctk.CTkCheckBox(root, text="Filter out files with suffix ", command=self.toggle_filter_checkbox, variable=self.filter_checkbox_state, onvalue="on", offvalue="off")
+        self.filter_suffix_entry = ctk.CTkEntry(root, textvariable=self.suffix_var, placeholder_text="_new", state="disabled")
+        self.filter_suffix_checkbox.pack()
         # self.filter_suffix_checkbox.place(relx=0.4, rely=0.6, anchor=ctk.CENTER)
         # self.filter_suffix_entry.place(relx=0.7, rely=0.6, anchor=ctk.CENTER)
         
@@ -51,6 +54,9 @@ class MainWindow:
             print("checkbox disabled")
 
     def on_verify_button_clicked(self):
-        # Assuming the video path is predefined or obtained through another UI component
-        self.verifier_function(self.check_path.get())
-        # SHoudl check for path before calling ^
+        folder_path = self.check_path.get()
+        ignore_ffmpeg = self.skip_ffmpeg_check_checkbox.get() == "on"
+        filter_staxrip_suffix = self.filter_suffix_checkbox.get() == "on"
+        
+        options = VerifyOptionsObject(folder_path, ignore_ffmpeg, filter_staxrip_suffix)
+        self.verifier_function(options)

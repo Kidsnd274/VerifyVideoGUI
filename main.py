@@ -1,6 +1,6 @@
 import customtkinter as ctk
 from ui.mainwindow import MainWindow
-from app_logic import call_verifier
+from util.app_logic import call_verifier
 
 def main():
     ctk.set_appearance_mode("System") # Probably want to put this in settings next time
