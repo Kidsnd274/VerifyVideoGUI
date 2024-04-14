@@ -1,5 +1,5 @@
 import customtkinter as ctk
-from ui.mainwindow import MainWindow
+from ui.main_window import MainWindow
 from util.app_logic import call_verifier
 
 class App(ctk.CTk):
