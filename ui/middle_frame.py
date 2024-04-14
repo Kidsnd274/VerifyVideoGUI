@@ -1,4 +1,5 @@
 import customtkinter as ctk
+from tkinter import filedialog
 
 class MiddleFrame(ctk.CTkFrame):
     def __init__(self, master, path_variable):

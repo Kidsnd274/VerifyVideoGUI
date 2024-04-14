@@ -12,7 +12,7 @@ class App(ctk.CTk):
         MainWindow(self, call_verifier)
         
 def main():
-    ctk.set_appearance_mode("System") # Probably want to put this in settings next time
+    ctk.set_appearance_mode("dark")
     ctk.set_default_color_theme("blue")
     app = App()
     MainWindow(app, call_verifier)

@@ -14,3 +14,7 @@ python -m venv venv
 .\venv\Scripts\activate.bat
 pip install -r requirements.txt
 ```
+Once you're in the virtual environment, to run the program just use this command:
+```
+python main.py
+```

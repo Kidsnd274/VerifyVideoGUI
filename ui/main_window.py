@@ -1,7 +1,6 @@
 import customtkinter as ctk
 import tkinter as tk
 from CTkListbox import *
-from tkinter import filedialog
 from util.verify_options_object import VerifyOptionsObject
 from ui.middle_frame import MiddleFrame
 from ui.bottom_frame import BottomFrame
