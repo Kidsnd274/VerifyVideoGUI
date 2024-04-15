@@ -23,3 +23,11 @@ class MiddleFrame(ctk.CTkFrame):
         file_path = filedialog.askdirectory()
         if file_path:
             self.path_variable.set(file_path)  # Update the entry with the selected file path
+            
+    def disable_frame(self):
+        for widget in self.winfo_children():
+            widget.configure(state="disabled")
+            
+    def enable_frame(self):
+        for widget in self.winfo_children():
+            widget.configure(state="normal")
