@@ -61,3 +61,4 @@ class MainWindow():
         
     def processing_stopped(self):
         self.enable_ui()
+        self.root.lift()

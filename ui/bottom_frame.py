@@ -30,6 +30,7 @@ class OptionsCheckboxFrame(ctk.CTkFrame):
 class BottomFrame(ctk.CTkFrame):
     def __init__(self, master, options_dict, verify_button_event):
         super().__init__(master)
+        self.button_original_color = ""
         
         self.grid_columnconfigure(1, weight=1)
         
@@ -38,11 +39,17 @@ class BottomFrame(ctk.CTkFrame):
         
         self.verify_button = ctk.CTkButton(self, text="Verify Video", command=verify_button_event)
         self.verify_button.grid(row=0, column=1, padx=20, pady=20, sticky="nsew")
+        self.button_original_color = self.verify_button.cget("fg_color")
         
     def disable_frame(self):
+        self.verify_button.configure(fg_color='red')
+        self.verify_button.configure(text="Verifying...")
         self.verify_button.configure(state="disabled")
         self.options_frame.disable_frame()
         
     def enable_frame(self):
+        self.verify_button.configure(fg_color=self.button_original_color)
+        self.verify_button.configure(text="Verify Video")
         self.verify_button.configure(state="normal")
         self.options_frame.enable_frame()
+    
