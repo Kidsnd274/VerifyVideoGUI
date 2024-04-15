@@ -1,6 +1,11 @@
 from util.verify_options_object import VerifyOptionsObject
+import threading
 
 def call_verifier(optionsObject):
+    thread = threading.Thread(target=start_subprocess, args=(optionsObject,), daemon=True)
+    thread.start()
+    
+def start_subprocess(optionsObject):
     file_path = optionsObject.folder_path
     skip_ffmpeg = optionsObject.skip_ffmpeg
     filter_suffix = optionsObject.filter_staxrip_suffix
