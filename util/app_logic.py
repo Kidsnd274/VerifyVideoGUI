@@ -1,4 +1,3 @@
-from util.verify_options_object import VerifyOptionsObject
 import threading
 import os
 import sys
@@ -19,7 +18,6 @@ def start_subprocess(optionsObject, callbackFunction):
         # extends the sys module by a flag frozen=True and sets the app 
         # path into variable _MEIPASS'.
         application_path = sys._MEIPASS
-        print(application_path)
     else:
         # Otherwise, we are running in a normal Python environment
         application_path = '.'
