@@ -1,6 +1,11 @@
 from util.verify_options_object import VerifyOptionsObject
+import threading
 
-def call_verifier(optionsObject):
+def call_verifier(optionsObject, callbackFunction):
+    thread = threading.Thread(target=start_subprocess, args=(optionsObject, callbackFunction, ), daemon=True)
+    thread.start()
+    
+def start_subprocess(optionsObject, callbackFunction):
     file_path = optionsObject.folder_path
     skip_ffmpeg = optionsObject.skip_ffmpeg
     filter_suffix = optionsObject.filter_staxrip_suffix
@@ -21,6 +26,7 @@ def call_verifier(optionsObject):
         args.append('-s')
 
     subprocess.run(args, creationflags=creation_flag)
+    callbackFunction()
 
 def check_for_ffmpeg_binaries():
     pass

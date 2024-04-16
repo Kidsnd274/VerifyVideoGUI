@@ -26,11 +26,12 @@ class MainWindow():
         title_label = ctk.CTkLabel(root, text="VerifyVideoGUI", justify="center", font=title_font)
         title_label.grid(row=0, column=0, padx=20, pady=10, sticky="ew", columnspan=100)
 
-        middle_frame = MiddleFrame(root, self.folder_path_variable)
-        middle_frame.grid(row=1)
+        self.middle_frame = MiddleFrame(root, self.folder_path_variable)
+        self.middle_frame.grid(row=1)
+            
+        self.bottom_frame = BottomFrame(root, options_dict, self.on_verify_button_clicked)
+        self.bottom_frame.grid(row=2, column=0, padx=50, pady=(0, 10), sticky="ew")
         
-        bottom_frame = BottomFrame(root, options_dict, self.on_verify_button_clicked)
-        bottom_frame.grid(row=2, column=0, padx=50, pady=(0, 10), sticky="ew")
 
     def toggle_filter_checkbox(self):
         if self.filter_suffix_checkbox.get() == "on":
@@ -45,5 +46,19 @@ class MainWindow():
         ignore_ffmpeg = self.skip_ffmpeg_variable.get() == "on"
         filter_staxrip_suffix = self.filter_suffix_variable.get() == "on"
         
+        self.disable_ui()
+        
         options = VerifyOptionsObject(folder_path, ignore_ffmpeg, filter_staxrip_suffix)
-        self.verifier_function(options)
+        self.verifier_function(options, self.processing_stopped)
+        
+    def disable_ui(self):
+        self.middle_frame.disable_frame()
+        self.bottom_frame.disable_frame()
+        
+    def enable_ui(self):
+        self.middle_frame.enable_frame()
+        self.bottom_frame.enable_frame()
+        
+    def processing_stopped(self):
+        self.enable_ui()
+        self.root.lift()
