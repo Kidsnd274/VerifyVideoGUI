@@ -1,6 +1,6 @@
 ![image](https://github.com/Kidsnd274/VerifyVideoGUI/assets/1343896/e743a1b1-e1ce-4168-abf5-d05a65cf9ec9)
 
-Make sure you have ffmpeg in PATH or the MediaAutomationScripts folder
+Make sure you have Python, ffmpeg and ffprobe in PATH or the MediaAutomationScripts folder
 ## Development
 To clone the repo, run the following command as this repo uses git submodules
 ```
