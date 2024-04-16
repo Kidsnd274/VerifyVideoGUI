@@ -4,6 +4,7 @@ from CTkListbox import *
 from util.verify_options_object import VerifyOptionsObject
 from ui.middle_frame import MiddleFrame
 from ui.bottom_frame import BottomFrame
+from ui.window_dialog import WindowDialog
 
 class MainWindow():
     def __init__(self, root, verifier_function):
@@ -41,10 +42,15 @@ class MainWindow():
             self.filter_suffix_entry.configure(state="disabled")
             print("checkbox disabled")
 
-    def on_verify_button_clicked(self):
+    def on_verify_button_clicked(self):        
         folder_path = self.folder_path_variable.get()
         ignore_ffmpeg = self.skip_ffmpeg_variable.get() == "on"
         filter_staxrip_suffix = self.filter_suffix_variable.get() == "on"
+        
+        if not folder_path:
+            error_dialog = WindowDialog(self.root, "Your folder path cannot be empty!")
+            error_dialog.wait_window()
+            return
         
         self.disable_ui()
         
